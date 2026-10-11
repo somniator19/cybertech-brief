@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="CyberTech Week 1 — Problem Discovery shortlist and technical questions for mentor sessions." />
+<meta name="theme-color" content="#13111c" />
+<title>CyberTech · Week 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,650&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+<div class="page-bg">
+  <div class="noise" aria-hidden="true"></div>
+  <div class="wrap">
+    <nav class="nav" aria-label="Sections">
+      <a class="pill" href="#overview">Overview</a>
+      <a class="pill" href="#legacy">Legacy IoT/OT</a>
+      <a class="pill" href="#deepfake">Deepfake</a>
+      <a class="pill" href="#llm">LLM Protection</a>
+      <a class="pill" href="#backups">Backups</a>
+      <a class="pill" href="#api">API Misuse</a>
+      <a class="pill" href="#quantum">Quantum</a>
+      <a class="pill" href="#questions">Questions</a>
+      <a class="pill" href="#flow">Meeting Flow</a>
+    </nav>
+
+    <header data-reveal>
+      <p class="kicker">TUMO Labs · CyberTech Ideathon</p>
+      <h1>CyberTech · Week 1</h1>
+      <p class="lede">Problem Discovery · Technical Mentor Prep · 11 October 2026</p>
+      <p class="lede">Team shortlist of candidate problems + technical questions for mentors</p>
+    </header>
+
+    <section id="overview" data-reveal>
+      <article class="card">
+        <h2>Overview</h2>
+        <p class="muted">
+          We are in Problem Discovery week. We have researched several
+          cybersecurity problems and narrowed them to a shortlist. The goal
+          of these technical sessions is to understand which problems are
+          most acute, which are realistic for a small student team to
+          tackle, and what a realistic MVP could look like.
+        </p>
+        <div class="callout">
+          Start with comparative scoring (1–5), then go deep on only the top 1–2 problems.
+        </div>
+      </article>
+    </section>
+
+    <section id="legacy" data-reveal>
+      <article class="card">
+        <span class="tag tag-priority">Priority</span>
+        <h2>Legacy IoT / OT Security</h2>
+        <p class="muted">
+          Old industrial and IoT devices (cameras, PLCs, SCADA, routers)
+          often cannot be patched, are poorly visible on the network, and
+          are actively used by attackers. Direction: protect the network
+          around the devices — inventory, risk scoring, isolation and
+          monitoring — instead of trying to patch the devices themselves.
+        </p>
+        <h3>Why it hurts</h3>
+        <ul class="bp shield">
+          <li>Many organizations have no current list of OT/IoT devices.</li>
+          <li>Devices stay in service for 10–20 years with ended vendor support.</li>
+          <li>Default passwords, unencrypted protocols, and flat networks remain common.</li>
+        </ul>
+        <h3>Who feels the pain</h3>
+        <ul class="bp shield">
+          <li>Energy, water, mining, manufacturing, hospitals</li>
+          <li>OT/IT leads and plant engineers</li>
+          <li>Smaller factories and utilities underserved by enterprise tools</li>
+        </ul>
+        <div class="callout">
+          Recommended focus: industrial / critical infrastructure visibility (Option A).
+        </div>
+      </article>
+    </section>
+
+    <section id="deepfake" data-reveal>
+      <article class="card">
+        <h2>Deepfake &amp; Money Fraud</h2>
+        <p class="muted">
+          AI voice and video clones are used for financial fraud. A few
+          seconds of audio are enough.
+        </p>
+        <h3>Why it hurts</h3>
+        <ul class="bp warn">
+          <li>Clone quality is high while human detection stays unreliable.</li>
+          <li>Urgency + social engineering bypasses normal approval checks.</li>
+          <li>Documented losses already run into the billions globally.</li>
+        </ul>
+        <h3>Who feels the pain</h3>
+        <ul class="bp warn">
+          <li>Banks, telecoms, and corporate finance teams</li>
+          <li>SMBs and older adults</li>
+          <li>Insurers facing rising claims</li>
+        </ul>
+        <div class="callout">
+          Possible angles: real-time detection, especially inside a telecom
+          network, and continuous authentication that does not depend on
+          “I recognize the voice.”
+        </div>
+      </article>
+    </section>
+
+    <section id="llm" data-reveal>
+      <article class="card">
+        <h2>LLM Application Protection</h2>
+        <p class="muted">
+          Companies ship chatbots, RAG systems, and AI agents faster than
+          they secure them. In the OWASP Top 10 for LLM Applications 2026,
+          prompt injection stays at #1 and excessive agency has risen sharply.
+        </p>
+        <h3>Why it hurts</h3>
+        <ul class="bp lock">
+          <li>Prompt injection (direct and indirect)</li>
+          <li>Sensitive data leakage through retrieval and tools</li>
+          <li>Agents taking unintended real-world actions</li>
+        </ul>
+        <h3>Who feels the pain</h3>
+        <ul class="bp lock">
+          <li>Mid-to-large enterprises rolling out internal AI tools</li>
+          <li>Banks, telecoms, and software companies</li>
+          <li>CTOs, CISOs, and AI/ML engineering teams</li>
+        </ul>
+        <div class="callout">
+          Opportunity space: runtime monitoring, simplified red-teaming, and guardrails for teams without a large AppSec budget.
+        </div>
+      </article>
+    </section>
+
+    <section id="backups" data-reveal>
+      <article class="card">
+        <h2>Backups &amp; Tamper-Proof Logging</h2>
+        <p class="muted">
+          Attackers deliberately corrupt logs and backups so investigation
+          and recovery fail. Direction: cryptographic anchoring — Merkle
+          roots with off-chain storage, or blockchain-based integrity — for
+          logs and backup states.
+        </p>
+        <h3>Why it hurts</h3>
+        <ul class="bp">
+          <li>Recovery rates after ransomware keep slipping despite more awareness.</li>
+          <li>Local logs and shared backup credentials are first targets.</li>
+          <li>Regulators expect non-repudiable audit trails.</li>
+        </ul>
+        <h3>Who feels the pain</h3>
+        <ul class="bp">
+          <li>CISOs, SOC and forensics teams</li>
+          <li>Regulated industries (finance, healthcare, critical infrastructure)</li>
+          <li>MSPs that must prove integrity to clients</li>
+        </ul>
+        <div class="callout">
+          Opportunity space: lightweight log/backup anchoring that plugs into existing SIEM pipelines without forcing full on-chain storage.
+        </div>
+      </article>
+    </section>
+
+    <section id="api" data-reveal>
+      <article class="card">
+        <h2>API Misuse</h2>
+        <p class="muted">
+          Incomplete API inventories, weak object-level authorization,
+          overly broad permissions, and little monitoring of how APIs are
+          actually used. The surface grows with every AI agent and internal
+          service.
+        </p>
+        <h3>Why it hurts</h3>
+        <ul class="bp lock">
+          <li>Broken object-level authorization and excessive data exposure</li>
+          <li>Shared or long-lived API keys blur ownership</li>
+          <li>AI agents multiply endpoints faster than security reviews</li>
+        </ul>
+        <h3>Who feels the pain</h3>
+        <ul class="bp lock">
+          <li>Product and engineering teams</li>
+          <li>Banks, fintech, and e-commerce</li>
+          <li>Security teams without specialized API tooling</li>
+        </ul>
+        <div class="callout">
+          Opportunity space: continuous API discovery + risk scoring for smaller engineering teams that cannot afford a full API gateway suite.
+        </div>
+      </article>
+    </section>
+
+    <section id="quantum" data-reveal>
+      <article class="card">
+        <span class="tag tag-support">Supporting</span>
+        <h2>Quantum / Post-Quantum Cryptography</h2>
+        <p class="muted">
+          Not a standalone main problem. Realistic for this team:
+          cryptographic inventory, and a quantum-risk layer on top of the
+          legacy IoT/OT direction. Pure QKD and building quantum computers
+          are low priority.
+        </p>
+        <h3>Why it hurts (long-term)</h3>
+        <ul class="bp">
+          <li>“Harvest now, decrypt later” already targets long-lived secrets.</li>
+          <li>Legacy devices often cannot adopt new algorithms.</li>
+          <li>Most organizations still lack a cryptographic inventory.</li>
+        </ul>
+        <h3>Who feels the pain</h3>
+        <ul class="bp">
+          <li>Governments, defense, and critical infrastructure</li>
+          <li>Teams protecting data with a long shelf life</li>
+          <li>Anyone preparing for PQC migration deadlines</li>
+        </ul>
+        <div class="callout">
+          Framing: the tool shows not only which devices are vulnerable
+          today, but which ones will not survive a post-quantum transition.
+        </div>
+      </article>
+    </section>
+
+    <section id="questions" data-reveal>
+      <article class="card">
+        <h2>Technical questions</h2>
+        <p class="muted">
+          Start of the meeting: ask the mentor to score each problem from 1
+          to 5. Tap a number to keep the score on this device.
+        </p>
+        <div class="callout">
+          Tip: after scoring, ask why the highest and lowest scores, then spend the rest of the time on the top problem only.
+        </div>
+        <div style="overflow-x:auto">
+          <table class="score">
+            <thead>
+              <tr>
+                <th>Problem</th>
+                <th>Acute</th>
+                <th>Realistic</th>
+                <th>Buyer</th>
+              </tr>
+            </thead>
+            <tbody id="score-body"></tbody>
+          </table>
+        </div>
+        <p class="muted" style="margin-top:0.8rem">
+          Criteria: how acute is it (especially in our context)? How
+          realistic is it for a small student team? Is there a clear buyer
+          who would pay?
+        </p>
+        <ul class="bp">
+          <li>Why did this problem get the highest or lowest scores?</li>
+          <li>If you were in our place, which one problem would you start with?</li>
+        </ul>
+
+        <h3>Deep questions</h3>
+        <p class="hint">Tap the number to cross out a question you already covered.</p>
+        <div class="toolbar">
+          <button type="button" class="btn-ghost" id="btn-reset-qs">Reset questions</button>
+          <button type="button" class="btn-ghost" id="btn-reset-scores">Reset scores</button>
+          <span class="progress" id="q-progress">0 / 12 covered</span>
+        </div>
+        <ol class="qs" id="deep-qs">
+          <li class="q-item" data-q="1">
+            <button type="button" class="q-check" aria-label="Mark question 1 done"></button>
+            <span class="q-text">For Legacy IoT/OT visibility — is a purely passive network-listening approach realistic as an MVP, or do we need some form of agent or active scanning from the start?</span>
+          </li>
+          <li class="q-item" data-q="2">
+            <button type="button" class="q-check" aria-label="Mark question 2 done"></button>
+            <span class="q-text">What are practical ways to fingerprint and identify unknown industrial/IoT devices without having signatures for every vendor?</span>
+          </li>
+          <li class="q-item" data-q="3">
+            <button type="button" class="q-check" aria-label="Mark question 3 done"></button>
+            <span class="q-text">How should we prioritise devices (CVEs + exposure + criticality of the process they control)?</span>
+          </li>
+          <li class="q-item" data-q="4">
+            <button type="button" class="q-check" aria-label="Mark question 4 done"></button>
+            <span class="q-text">In real industrial environments, how do companies actually isolate risky legacy devices without breaking production? What usually goes wrong?</span>
+          </li>
+          <li class="q-item" data-q="5">
+            <button type="button" class="q-check" aria-label="Mark question 5 done"></button>
+            <span class="q-text">Given our current skill mix, which technical direction is most realistic to prototype in 4–6 weeks?</span>
+          </li>
+          <li class="q-item" data-q="6">
+            <button type="button" class="q-check" aria-label="Mark question 6 done"></button>
+            <span class="q-text">What is the smallest useful thing we could show as an MVP (discovery + inventory dashboard, risk report, something else)?</span>
+          </li>
+          <li class="q-item" data-q="7">
+            <button type="button" class="q-check" aria-label="Mark question 7 done"></button>
+            <span class="q-text">Are there open datasets, traffic captures or lab environments you would recommend for testing OT/IoT discovery ideas?</span>
+          </li>
+          <li class="q-item" data-q="8">
+            <button type="button" class="q-check" aria-label="Mark question 8 done"></button>
+            <span class="q-text">For deepfake voice detection — what approaches can realistically run with low latency (edge / network-level)?</span>
+          </li>
+          <li class="q-item" data-q="9">
+            <button type="button" class="q-check" aria-label="Mark question 9 done"></button>
+            <span class="q-text">For LLM application security — where do you still see meaningful gaps that a small team could address?</span>
+          </li>
+          <li class="q-item" data-q="10">
+            <button type="button" class="q-check" aria-label="Mark question 10 done"></button>
+            <span class="q-text">Which two problems could realistically be combined into one stronger solution?</span>
+          </li>
+          <li class="q-item" data-q="11">
+            <button type="button" class="q-check" aria-label="Mark question 11 done"></button>
+            <span class="q-text">For which problem is it easiest to quickly validate reality with 5 interviews in one week?</span>
+          </li>
+          <li class="q-item" data-q="12">
+            <button type="button" class="q-check" aria-label="Mark question 12 done"></button>
+            <span class="q-text">Who should we talk to next, and could you introduce us?</span>
+          </li>
+        </ol>
+      </article>
+    </section>
+
+    <section id="flow" data-reveal>
+      <h2>Meeting flow</h2>
+      <p class="muted" style="margin-top:0">
+        Suggested 30–40 minutes. Two sessions together are about one hour —
+        split the deep questions, don’t repeat the whole shortlist twice.
+      </p>
+      <div class="callout" style="margin-bottom:0.85rem">
+        Session A: scoring + Legacy IoT/OT deep dive. Session B: whatever ranked second + closing intros.
+      </div>
+      <div class="flow">
+        <article class="card step">
+          <strong>0–5 min</strong>
+          Context and the goal of the session.
+        </article>
+        <article class="card step">
+          <strong>5–15 min</strong>
+          Quick overview of the two or three strongest problems.
+        </article>
+        <article class="card step">
+          <strong>15–35 min</strong>
+          Scoring, then the technical questions.
+        </article>
+        <article class="card step">
+          <strong>Last 5 min</strong>
+          Clear next steps and possible introductions.
+        </article>
+      </div>
+    </section>
+
+    <footer class="foot">
+      Combined from team research · Prepared for technical mentor sessions · October 2026
+      <div class="egg" title="For the people who pointed the way">
+        <span class="orb" aria-hidden="true"></span>
+        Thanks to mentors — for the guidance.
+      </div>
+    </footer>
+  </div>
+</div>
+<script src="js/app.js" defer></script>
+</body>
+</html>
